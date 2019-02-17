@@ -236,18 +236,6 @@ export default {
       description: [
         "个人创作的一款有趣的小游戏，锻炼记忆力的消消乐，设有多档难度选择，支持自定义图片。"
       ]
-    },
-    {
-      name: "jigsaw",
-      link: [
-        {
-          url: "https://github.com/hamger/jigsaw",
-          name: "源码"
-        }
-      ],
-      description: [
-        "通过手指拖拽小图片，拼出完整的图片。支持选择本地图片来进行拼图，设有3档难度选择。"
-      ]
     }
   ]
 };
