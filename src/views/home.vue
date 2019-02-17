@@ -32,15 +32,15 @@ export default {
 <style scoped lang="less">
 .container {
   .title {
-    margin: 20px 0 50px;
+    margin-bottom: 50px;
     img {
       border-radius: 50%;
       display: block;
-      margin: 0 auto 15px;
+      margin: 0 auto;
       width: 150px;
     }
     h1 {
-      margin: 30px 0 40px;
+      margin: 30px 0;
     }
   }
 }

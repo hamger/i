@@ -31,9 +31,9 @@ a {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  // font-size: 14px;
   padding: 0 10px;
   #nav {
+    font-size: 20px;
     padding: 30px;
     a {
       font-weight: bold;
