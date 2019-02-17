@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>孟汉光的简历</title>
+    <meta
+      name="description"
+      content="热爱技术、勤于思考、乐于交流、享受生活、追求卓越的野生程序猿一只。目前正在寻找前端开发工程师岗位，期待遇到更优秀的团队，更大程度地实现自我价值，快招我到碗里来吧！"
+    />
+    <meta name="keywords" content="孟汉光,前端,工作,简历" />
+    <link rel="shortcut icon" href="./q-avatar.jpeg" />
+    <link
+      rel="stylesheet"
+      href="./Font-Awesome-3.2.1/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./pdf.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="sidebar">
+        <div class="title">
+          <img :src="$options.title.url" />
+          <h1>{{ $options.title.name }}</h1>
+          <h2>{{ $options.title.description }}</h2>
+        </div>
+        <ul class="side-info">
+          <li>
+            <dt><i class="icon-bookmark"></i> Basic info. 基本信息</dt>
+            <dd v-for="item in $options.info">
+              <i :class="item.icon"></i>{{ item.name }}
+            </dd>
+          </li>
+          <li>
+            <dt><i class="icon-bookmark"></i> Links. 相关链接</dt>
+            <dd v-for="item in $options.links">
+              <i :class="item.icon"></i>
+              {{ item.name }}
+              <a :href="item.url" target="_blank">{{ item.url }}</a>
+            </dd>
+          </li>
+          <li>
+            <dt><i class="icon-bookmark"></i> Contact. 联系方式</dt>
+            <dd v-for="item in $options.contact">
+              <i :class="item.icon"></i>{{ item.name }}
+            </dd>
+          </li>
+          <li>
+            <dt><i class="icon-bookmark"></i> Application. 应聘岗位</dt>
+            <dd>{{ $options.application }}</dd>
+          </li>
+          <li class="skill">
+            <dt><i class="icon-bookmark"></i> Tech. 技术栈</dt>
+            <dd v-for="item in $options.skill">
+              <div class="skill-name">{{ item.name }}</div>
+              <div class="skill-bar-wrap">
+                <div class="skill-bar" :style="{width: item.width + '%'}"></div>
+              </div>
+            </dd>
+          </li>
+          <li class="hobby">
+            <dt><i class="icon-bookmark"></i> Hobby. 爱好</dt>
+            <dl>
+              <div v-for="item in $options.hobby">
+                <img :src="item.url" /><br />{{ item.name }}
+              </div>
+            </dl>
+          </li>
+        </ul>
+        <div class="side-bottom">
+          <p>乐观开朗、热爱创造、享受生活、乐于表达的野生程序猿一只。</p>
+          <p>
+            目前正在寻找前端开发工程师的岗位，期待遇到更优秀的团队，更大程度地实现自我价值。快招我到碗里来吧！
+          </p>
+        </div>
+      </div>
+      <div class="main">
+        <ul class="main-info">
+          <li>
+            <dt><i class="icon-bookmark"></i> Experience. 工作经验</dt>
+            <template v-for="item in $options.experience">
+              <h3>{{ item.company }}</h3>
+              <ul class="exp">
+                <li v-for="item2 in item.exp">
+                  <div class="circle"></div>
+                  <h4>{{ item2.name }}</h4>
+                  <p v-for="item3 in item2.description">{{ item3 }}</p>
+                </li>
+              </ul>
+            </template>
+          </li>
+          <li>
+            <dt><i class="icon-bookmark"></i> Production. 个人作品</dt>
+            <ul class="exp">
+              <li v-for="item in $options.production">
+                <div class="circle"></div>
+                <h4>
+                  <template v-if="item.names" v-for="item2 in item.names">
+                    {{ item2.name }}
+                    <a
+                      v-for="item3 in item2.link"
+                      :href="item3.url"
+                      target="_blank"
+                      ><i class="icon-link"></i>{{ item3.name + " " }}</a
+                    >
+                  </template>
+                  <template v-if="!item.names">
+                    {{ item.name }}
+                    <a
+                      v-for="item2 in item.link"
+                      :href="item2.url"
+                      target="_blank"
+                      ><i class="icon-link"></i>{{ item2.name + " " }}</a
+                    >
+                  </template>
+                </h4>
+                <p v-for="item3 in item.description">{{ item3 }}</p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <dt><i class="icon-bookmark"></i> Self-evaluation. 自我评价</dt>
+            <ul class="exp">
+              <li>
+                <div class="circle"></div>
+                <p
+                  v-for="(item, index) in $options.evaluation"
+                  :style="{paddingTop: index ? '0' : '25px'}"
+                >
+                  {{ item }}
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        title: {
+          name: "孟汉光",
+          url: "./q-avatar.jpeg",
+          description: '"Full of curiosity. Enjoy coding."'
+        },
+        info: [
+          { name: " 性别: 男", icon: "icon-adjust" },
+          { name: " 年龄: 90 后", icon: "icon-user" },
+          { name: " 本科: 中国计量大学", icon: "icon-book" },
+          { name: " 籍贯: 浙江省诸暨市", icon: "icon-home" }
+        ],
+        links: [
+          {
+            name: " GitHub: ",
+            url: "https://github.com/hamger",
+            icon: "icon-github"
+          },
+          {
+            name: " Blog: ",
+            url: "https://hamger.github.io/",
+            icon: "icon-edit"
+          }
+        ],
+        contact: [
+          { name: " 邮箱: 2313303800@qq.com", icon: "icon-envelope" },
+          { name: " 微信: mhg23133", icon: "icon-comments" },
+          { name: " 手机: 15958023204", icon: "icon-phone" }
+        ],
+        application: "前端开发工程师",
+        skill: [
+          { name: "HTML", width: 80 },
+          { name: "CSS", width: 80 },
+          { name: "JavaScript", width: 72 },
+          { name: "jQuery", width: 70 },
+          { name: "Bootstrap", width: 71 },
+          { name: "Vue", width: 75 },
+          { name: "React", width: 66 },
+          { name: "Webpack", width: 60 },
+          { name: "Node.js", width: 65 },
+          { name: "PHP", width: 50 },
+          { name: "python", width: 53 },
+          { name: "MySQL", width: 51 },
+          { name: "ECharts", width: 61 },
+          { name: "Canvas", width: 75 },
+          { name: "less", width: 73 },
+          { name: "sass", width: 73 },
+          { name: "PhotoShop", width: 50 }
+        ],
+        hobby: [
+          { name: "户外运动", url: "./icon/outdoor.png" },
+          { name: "乒乓球", url: "./icon/pingpong.png" },
+          { name: "狼人杀", url: "./icon/werewolf.png" },
+          { name: "造轮子", url: "./icon/wheel.png" }
+        ],
+        experience: [
+          {
+            company: "杭州一骑轻尘信息技术有限公司（2018.5 - 至今）",
+            exp: [
+              {
+                name: "车辆中心",
+                description: [
+                  "vue + element-ui，关于车辆状态的后台管理系统，旨在帮助业务人员更快捷的获取和管理车辆信息。"
+                ]
+              },
+              {
+                name: "内网监控门户",
+                description: [
+                  "node.js + express + ejs + mysql，为运维人员服务的一个信息门户，对监控网址进行增删改管理。"
+                ]
+              }
+            ]
+          },
+          {
+            company: "浙江核新同花顺网络信息股份有限公司（2017.4 - 2018.5）",
+            exp: [
+              {
+                name: "组合广场",
+                description: [
+                  "独立开发佣金宝（国金证券客户端）的组合广场四期，采用 vue + sass 编写，主要是对投顾组合的数据进行展示。",
+                  "在这个项目中使用了自己的插件-日期选择器和地区选择器。"
+                ]
+              },
+              {
+                name: "数据中心",
+                description: [
+                  "Vue + sass + ECharts，独立开发数据中心14个模块的数据展示与交互，并从中抽离出一些实用的 Vue 组件。"
+                ]
+              },
+              {
+                name: "模拟炒股",
+                description: [
+                  "接手佣金宝模拟炒股的二期，使用 jquery 编写的传统项目，主要开发个人主页、调仓、炒股大赛等部分。",
+                  "封装了很多复用函数，并删除了大量冗余代码。在开发调试、函数封装、文件命名上进行了项目优化。"
+                ]
+              },
+              {
+                name: "消息推送",
+                description: [
+                  "jQuery + ECharts，参与 cbas2.0 （用户行为分析系统）的前端开发工作，主要负责开发其中的消息推送模块。"
+                ]
+              }
+            ]
+          },
+          {
+            company: "杭州巨盘科技有限公司（2016.12 - 2017.3）",
+            exp: [
+              {
+                name: "一米发域名交易平台",
+                description: [
+                  "jQuery + Bootstrap，参与一米发域名交易的平台项目，开发域名拍卖和一口价交易页面，以及发布域名资讯的功能。"
+                ]
+              }
+            ]
+          }
+        ],
+        production: [
+          {
+            name: "vue-immutable",
+            link: [
+              {
+                url: "https://github.com/hamger/vue-immutable",
+                name: "源码"
+              },
+              {
+                url: "https://hamger.github.io/vue-immutable/",
+                name: "文档"
+              }
+            ],
+            description: [
+              "vue-immutable 是一个 vue 插件，优化 vue 对 immutable 数据的处理，减少不必要的数据观察。"
+            ]
+          },
+          {
+            name: "cvs",
+            link: [
+              {
+                url: "https://github.com/hamger/cvs",
+                name: "源码"
+              },
+              {
+                url: "https://hamger.github.io/cvs/",
+                name: "文档"
+              }
+            ],
+            description: [
+              "cvs 是一个基于 canvas 的 2D 基础绘图框架，旨在使 canvas绘图更加简单。API 设计秉承极简的原则，学习成本低；将 canvas 绘图改写为面向对象编程；支持高度自由的自定义元素，应用灵活；元素支持基础事件绑定，使画布具有更多的交互功能；基于离屏渲染的缓存机制，使动画绘制更加流畅；基于时间轴的细粒度动画控制。"
+            ]
+          },
+          {
+            name: "Seed",
+            link: [
+              {
+                url: "https://github.com/hamger/Seed",
+                name: "源码&文档"
+              }
+            ],
+            description: [
+              "一个仿 Vue 的前端 mvc 基础框架，基于 data-dirver 和 hg-virtual-dom ， 使用 jsx 作为模板引擎。"
+            ]
+          },
+          {
+            name: "word-counter",
+            link: [
+              {
+                url: "https://github.com/hamger/word-counter",
+                name: "源码&文档"
+              }
+            ],
+            description: [
+              "一个用来统计英文原著中单词出现概率的工具，使用 python 编写，支持批量单词过滤、通过爬虫实现的快速查词。"
+            ]
+          },
+          {
+            name: "data-dirver",
+            link: [
+              {
+                url: "https://github.com/hamger/data-dirver",
+                name: "源码"
+              },
+              {
+                url: "https://hamger.github.io/data-dirver/",
+                name: "文档"
+              }
+            ],
+            description: [
+              "实现 JavaScript 数据响应的解决方案。基于 Object.defineProperties ，使用 TypeScript 编写。只暴露了三个函数，其中 observe 和 Watcher 用于监听单一数据，使用 DD 构造器可以体现数据间的父子关系，便于实现复杂情况下的数据响应。"
+            ]
+          },
+          {
+            name: "hg-virtual-dom",
+            link: [
+              {
+                url: "https://github.com/hamger/hg-virtual-dom",
+                name: "源码&文档"
+              }
+            ],
+            description: [
+              "减少手动 DOM 操作的解决方案。整个库只暴露了四个方法，非常简单易用，且提供中英双文档。",
+              "使用 jasmine 进行单元测试，且覆盖率达到百分之百。"
+            ]
+          },
+          {
+            name: "hg-jslibrary",
+            link: [
+              {
+                url: "https://github.com/hamger/hg-jslibrary",
+                name: "源码"
+              },
+              {
+                url: "https://hamger.github.io/hg-jslibrary/",
+                name: "文档"
+              }
+            ],
+            description: [
+              "JavaScript 函数库，收纳了许多非常实用的函数，比如对象数组排序、日期格式化、对象深克隆、路由信息解析等。"
+            ]
+          },
+          {
+            name: "werewolfkill-recorder",
+            link: [
+              {
+                url: "https://github.com/hamger/werewolfkill-recorder",
+                name: "源码"
+              },
+              {
+                url: "https://hamger.github.io/werewolfkill-recorder/#/",
+                name: "Demo"
+              }
+            ],
+            description: [
+              "使用 react 写的一个狼人杀记录器，主要使面杀时记录票型更加便利。"
+            ]
+          },
+          {
+            name: "annotate-webpack-plugin",
+            link: [
+              {
+                url: "https://github.com/hamger/annotate-webpack-plugin",
+                name: "源码&文档"
+              }
+            ],
+            description: [
+              "一个用于添加文档注释的 webpack 插件。提供中英双文档，该插件只接受两个配置参数，使用十分简单。"
+            ]
+          },
+          {
+            names: [
+              {
+                name: "mhg-cli",
+                link: [
+                  {
+                    url: "https://github.com/hamger/mhg-cli",
+                    name: "源码"
+                  }
+                ]
+              },
+              {
+                name: "mhg-templates",
+                link: [
+                  {
+                    url: "https://github.com/hamger/mhg-templates",
+                    name: "源码"
+                  }
+                ]
+              }
+            ],
+            description: [
+              "mhg-cli 是一个用于快速创建项目模板的脚手架。结合 mhg-templates 现阶段提供的 6 套模板，帮助提高项目搭建效率。"
+            ]
+          },
+          {
+            names: [
+              {
+                name: "hg-citypicker",
+                link: [
+                  {
+                    url: "https://github.com/hamger/hg-citypicker",
+                    name: "源码&文档"
+                  }
+                ]
+              },
+              {
+                name: "hg-datepicker",
+                link: [
+                  {
+                    url: "https://github.com/hamger/hg-datepicker",
+                    name: "源码&文档"
+                  }
+                ]
+              },
+              {
+                name: "hg-parapicker",
+                link: [
+                  {
+                    url: "https://github.com/hamger/hg-parapicker",
+                    name: "源码&文档"
+                  }
+                ]
+              }
+            ],
+            description: [
+              "移动端的地区选择器、日期选择器、并列选择器。hg-citypicker 适用于嵌套关系数据的选择，支持多级联动，已在线上项目中使用。hg-datapicker 适用于日期的选择，支持三种类型的日期选择，已在线上项目中使用。hg-parapicker 适用于并列关系数据的选择。以上三者均支持滑动惯性和选择器样式的配置。"
+            ]
+          },
+          {
+            name: "hg-vcomponents",
+            link: [
+              {
+                url: "https://github.com/hamger/hg-vcomponents",
+                name: "源码&Demo"
+              }
+            ],
+            description: [
+              "从实际项目中提炼出一些常用的组件并形成自己的 Vue 组件库。",
+              "现阶段包括左滑删除组件、表头固定组件、页面顶置组件、多项文本输入组件、空心和实心箭头组件等12个组件。"
+            ]
+          }
+        ],
+        evaluation: [
+          "在校时数学和物理成绩突出，具有较强的数理逻辑推导能力和模型抽象能力；",
+          "担任过大学班长，勇于锻炼自己的组织协调能力和领导力；参加过演讲、主持、小品和相声，喜欢公众演讲；",
+          "乐于学习新事物，愿意结识新朋友，易于沟通和相处；充满好奇心，勤于思考，愿意分享，享受 coding。"
+        ]
+      });
+    </script>
+  </body>
+</html>
